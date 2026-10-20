@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VoiceAuth | AI Voice Authentication</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/recorder.js') }}" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <span>🎙 VoiceAuth</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/register">Registration</a></li>
+    <li><a href="/login">Login</a></li>
+
+    {% if session.get("user_id") %}
+      <li><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/logout" class="btn-logout">Logout</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</div>
+
+<footer class="footer">
+  <p>© 2026 VoiceAuth | AI Voice Authentication System</p>
+</footer>
+
+</body>
+</html>

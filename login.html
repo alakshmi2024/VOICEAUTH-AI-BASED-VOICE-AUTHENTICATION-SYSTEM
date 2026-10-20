@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-box">
+  <h2>Login</h2>
+  <p>Authenticate using your registered voice</p>
+
+  <form method="POST" enctype="multipart/form-data" id="loginForm">
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <h3>🎙 Voice Recording</h3>
+
+    <button type="button" class="btn" onclick="startRecording()">Start Recording</button>
+    <button type="button" class="btn btn-secondary" onclick="stopRecording()">Stop Recording</button>
+
+    <audio id="audioPlayback" controls></audio>
+
+    <input type="file" name="voice" id="voiceFile" hidden required>
+
+    <button type="submit" class="btn">Login</button>
+  </form>
+</div>
+
+{% endblock %}
